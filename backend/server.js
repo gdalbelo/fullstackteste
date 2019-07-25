@@ -22,7 +22,7 @@ app.get('/posts/:id', async(req, res) => {
 app.post('/post', (req, res) => {
 
     var postData = req.body;
-    postData.author = '5d39bad89102f34d94c68b38';
+    postData.author = req.body.id;
 
     var post = new Post(postData);
 
@@ -48,8 +48,10 @@ app.get('/users', async(req, res) => {
 
 app.get('/profile/:id', async(req, res) => {
     try {
-        let user = await User.findById(req.params.id    , '-password -__v');
-        res.send(user);
+        var author = req.params.id;
+        var posts = await Post.find({author});
+        let user = await User.findById(req.params.id, '-password -__v');
+        res.send({user: user, post: posts});
     } catch (error) {
         console.log(error);
         res.sendStatus(500);

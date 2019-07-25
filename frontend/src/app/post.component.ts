@@ -19,6 +19,6 @@ export class PostComponent {
     postMsg = '';
 
     post() {
-        this.apiService.postMessage({msg: this.postMsg});
+        this.apiService.postMessage({msg: this.postMsg, id: localStorage.getItem('id')});
     }
 }

@@ -61,6 +61,7 @@ export class ApiService {
     loginUser(loginData) {
         this.http.post<any>(this.authPath + '/login', loginData).subscribe(res => {
             localStorage.setItem('token', res.token);
+            localStorage.setItem('id', res.id);
         });
     }
 }

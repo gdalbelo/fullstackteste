@@ -27,7 +27,7 @@ router.post('/register', (req, res) => {
         if(!user) {
             return res.status(401).send({message: 'Email or Password Invalid'})
         }
-    
+        
         bcrypt.compare(userData.password, user.password, (err, isMatch) => {
             if(!isMatch){
                 return res.status(401).send({message: 'Email or Password Invalid'})
@@ -35,7 +35,7 @@ router.post('/register', (req, res) => {
             let payload = { sub: user._id }
             let token = jwt.encode(payload, '123');
         
-            res.status(200).send({token});
+            res.status(200).send({token, id: user._id});
         })
     });
 

@@ -10,7 +10,7 @@ import { ApiService } from './api.service';
       <li><button *ngIf="!apiService.isAuthenticated" routerLink="/login">Login</button></li>
       <li><button *ngIf="apiService.isAuthenticated" (click)="apiService.logout()" routerLink="/">Logout</button></li>
       <li><button routerLink="/users">Users</button></li>
-      <li><button routerLink="/products">Products</button></li>
+      <li><button *ngIf="apiService.isAuthenticated" routerLink="/products">Products</button></li>
     </ul>
     <router-outlet></router-outlet>
   `,
