@@ -5,11 +5,11 @@ import { ApiService } from './api.service';
   selector: 'app-register',
   template: `
     <form>
-        Email:<input type="email" [(ngModel)]="registerData.email" name="email" placeholder="Email" />
-        Senha:<input type="password" [(ngModel)]="registerData.password" name="password" />
-        Nome:<input type="text" [(ngModel)]="registerData.name" name="name" />
-        Descrição:<input type="text" [(ngModel)]="registerData.description" name="description" />
-        <button routerLink="/" (click)="Post()">Register</button>
+        <input type="email" [(ngModel)]="registerData.email" name="email" placeholder="Email" />
+        <input type="password" [(ngModel)]="registerData.password" name="password" placeholder="Password" />
+        <input type="text" [(ngModel)]="registerData.name" name="name" placeholder="Nome" />
+        <input type="text" [(ngModel)]="registerData.description" name="description" placeholder="Descrição" /><br/>
+        <button routerLink="/" (click)="Post()" class="btn btn-primary">Register</button>
     </form>
   `,
   styleUrls: ['./app.component.css']

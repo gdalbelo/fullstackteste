@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
     <h1>Novo produto</h1>
     <form>
         <textarea [(ngModel)]="postMsg" name="description" placeholder="Post"></textarea>
-        <button (click)="post()">Post</button>
+        <button (click)="post()" class="btn btn-primary">Post</button>
     </form>
   `,
   styleUrls: ['./app.component.css']

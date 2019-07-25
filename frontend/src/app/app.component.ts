@@ -4,15 +4,17 @@ import { ApiService } from './api.service';
 @Component({
   selector: 'app-root',
   template: `
-    <ul  class="collapse bg-dark">
+    <ul>
       <li routerLink="/">Registration App</li>
-      <li><button *ngIf="!apiService.isAuthenticated" routerLink="/register">Register</button></li>
-      <li><button *ngIf="!apiService.isAuthenticated" routerLink="/login">Login</button></li>
-      <li><button *ngIf="apiService.isAuthenticated" (click)="apiService.logout()" routerLink="/">Logout</button></li>
-      <li><button routerLink="/users">Users</button></li>
-      <li><button *ngIf="apiService.isAuthenticated" routerLink="/products">Products</button></li>
+      <li><button *ngIf="!apiService.isAuthenticated" routerLink="/register" class="btn btn-info">Register</button></li>
+      <li><button *ngIf="!apiService.isAuthenticated" routerLink="/login" class="btn btn-info">Login</button></li>
+      <li><button *ngIf="apiService.isAuthenticated" (click)="apiService.logout()" routerLink="/" class="btn btn-info">Logout</button></li>
+      <li><button routerLink="/users" class="btn btn-info">Users</button></li>
+      <li><button *ngIf="apiService.isAuthenticated" routerLink="/products" class="btn btn-info">Products</button></li>
     </ul>
-    <router-outlet></router-outlet>
+    <div class="center">
+      <router-outlet></router-outlet>
+    </div>
   `,
   styleUrls: ['./app.component.css']
 })
