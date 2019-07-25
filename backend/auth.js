@@ -15,7 +15,7 @@ router.post('/register', (req, res) => {
                 let payload = { sub: newUser._id }
                 let token = jwt.encode(payload, '123');
             
-                res.status(200).send({token});
+                res.status(200).send({token, id: newUser._id});
             }
         })
     });

@@ -50,6 +50,7 @@ export class ApiService {
         this.http.post<any>(this.authPath + '/register', regData).subscribe(res => {
             console.log(res);
             localStorage.setItem(this.TOKEN_KEY, res.token);
+            localStorage.setItem('id', res.id);
         });
         if (this.isAuthenticated) {
             this.route.navigateByUrl('/');

@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
         <p>Email: {{profile.user?.email}}</p>
         <p>Descrição: {{profile.user?.description}}</p>
     </div>
+    <h1>Products</h1>
     <app-messages></app-messages>
   `,
   styleUrls: ['./app.component.css']
