@@ -65,4 +65,21 @@ export class ApiService {
             localStorage.setItem('id', res.id);
         });
     }
+
+    atualizaProduto(msg, id) {
+        const obj: any = {};
+        obj.msg = msg;
+        obj.id = id;
+        this.http.put<any>(this.path + '/post-edit', obj).subscribe(res => {
+            console.log(res);
+        });
+    }
+
+    deletePost(id, authorid) {
+        this.http.delete(this.path + '/post-delete/' + id).subscribe(r => {
+            this.http.get<any>(this.path + '/posts/' + authorid).subscribe(res => {
+                this.messages = res;
+            });
+        });
+    }
 }

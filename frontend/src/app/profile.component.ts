@@ -7,9 +7,9 @@ import { ActivatedRoute } from '@angular/router';
   template: `
     <h1>Profile</h1>
     <div>
-        <p>Nome: {{profile.user?.name}}</p>
-        <p>Email: {{profile.user?.email}}</p>
-        <p>Descrição: {{profile.user?.description}}</p>
+        <p>Nome: {{profile?.user.name}}</p>
+        <p>Email: {{profile?.user.email}}</p>
+        <p>Descrição: {{profile?.user.description}}</p>
     </div>
     <h1>Products</h1>
     <app-messages></app-messages>
