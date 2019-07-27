@@ -11,11 +11,16 @@ export class ApiService {
     TOKEN_KEY = 'token';
     path = 'http://localhost:3000';
     authPath = 'http://localhost:3000/auth';
+    id;
 
     getMessage(userId) {
         this.http.get<any>(this.path + '/posts/' + userId).subscribe(res => {
             this.messages = res;
         });
+    }
+
+    get getId() {
+        return this.id;
     }
 
     get token() {
@@ -50,7 +55,7 @@ export class ApiService {
         this.http.post<any>(this.authPath + '/register', regData).subscribe(res => {
             console.log(res);
             localStorage.setItem(this.TOKEN_KEY, res.token);
-            localStorage.setItem('id', res.id);
+            this.id = res.id;
         });
         if (this.isAuthenticated) {
             this.route.navigateByUrl('/');
@@ -62,7 +67,7 @@ export class ApiService {
     loginUser(loginData) {
         this.http.post<any>(this.authPath + '/login', loginData).subscribe(res => {
             localStorage.setItem('token', res.token);
-            localStorage.setItem('id', res.id);
+            this.id = res.id;
         });
     }
 

@@ -12,8 +12,10 @@ import { ActivatedRoute } from '@angular/router';
     <div *ngIf="edit">
       <input type="text" [(ngModel)]="msg.msg" (blur)="this.salvarProduto(msg, msg._id)" />
     </div>
-    <button class="btn btn-info" (click)="edit = !edit">Editar</button>
-    <button class="btn btn-danger" (click)="deletePost(msg._id, msg.author)">Excluir</button>
+    <div *ngIf="msg.author == this.apiService.getId">
+      <button class="btn btn-info" (click)="edit = !edit">Editar</button>
+      <button class="btn btn-danger" (click)="deletePost(msg._id, msg.author)">Excluir</button>
+    </div>
 </div>`,
   styleUrls: ['./app.component.css']
 })
@@ -23,7 +25,8 @@ export class MessagesComponent {
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
-    const id = localStorage.getItem('id');
+    const id = this.apiService.id;
+    console.log('id: ' + id);
     const userId = this.route.snapshot.params.id;
     this.apiService.getMessage(userId);
   }
