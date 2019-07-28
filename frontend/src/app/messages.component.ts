@@ -25,7 +25,7 @@ export class MessagesComponent {
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
-    const id = this.apiService.id;
+    const id = this.apiService.getId;
     console.log('id: ' + id);
     const userId = this.route.snapshot.params.id;
     this.apiService.getMessage(userId);

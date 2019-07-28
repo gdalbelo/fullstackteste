@@ -14,8 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/posts/:id', async(req, res) => {
-    var author = req.params.id;
-    var posts = await Post.find({author});
+    var posts = await Post.find({author: req.params.id});
     res.send(posts);
 });
 
@@ -48,8 +47,9 @@ app.delete('/post-delete/:id', function (req, res) {
 
 app.post('/post', (req, res) => {
 
-    var postData = req.body;
-    postData.author = req.body.id;
+    var postData = {};
+    postData.author = req.body.author;
+    postData.msg = req.body.msg;
 
     var post = new Post(postData);
 
@@ -75,8 +75,8 @@ app.get('/users', async(req, res) => {
 
 app.get('/profile/:id', async(req, res) => {
     try {
-        var author = req.params.id;
-        var posts = await Post.find({author});
+        var authorid = req.params.id;
+        var posts = await Post.find({author: authorid});
         let user = await User.findById(req.params.id, '-password -__v');
         res.send({user: user, post: posts});
     } catch (error) {

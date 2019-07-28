@@ -11,7 +11,7 @@ export class ApiService {
     TOKEN_KEY = 'token';
     path = 'http://localhost:3000';
     authPath = 'http://localhost:3000/auth';
-    id;
+    id = '';
 
     getMessage(userId) {
         this.http.get<any>(this.path + '/posts/' + userId).subscribe(res => {
@@ -58,7 +58,7 @@ export class ApiService {
             this.id = res.id;
         });
         if (this.isAuthenticated) {
-            this.route.navigateByUrl('/');
+            this.route.navigateByUrl('/users');
         } else {
             console.log('Registration Failed');
         }
